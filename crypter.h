@@ -2,7 +2,7 @@
 #define ENCODER
 //Function declarations
 
-void t_cipher(char *Message, int shift, int choice);
-void f_cipher(char *filename1, int shift, int choice);
+void t_crypter(char *Message, int shift, int choice);
+void f_crypter(char *filename1, int shift, int choice);
 
 #endif 

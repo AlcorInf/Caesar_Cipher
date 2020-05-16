@@ -4,7 +4,7 @@
 #include "crypter.h"
 
 
-void t_cipher(char *Message, int shift, int choice){
+void t_crypter(char *Message, int shift, int choice){
   char *fMessage;
 
   fMessage = (char*) malloc(sizeof(Message)); //Allocating memory based on message size
@@ -34,7 +34,7 @@ void t_cipher(char *Message, int shift, int choice){
 }
 
 
-void f_cipher(char *filename1, int shift, int choice){
+void f_crypter(char *filename1, int shift, int choice){
   FILE *fp1, *fp2;
   char *filename2;
   int ch;

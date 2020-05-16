@@ -1,3 +1,9 @@
+/*
+Author: Kishan Murthy (AlcorInf)
+
+Coded and tested on repl.it
+Tested on Linux and Windows
+*/
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -13,6 +19,7 @@ int main()
 
 	do {
 		printf("\n1.Encrypt Text\n2.Decrypt Text\n3.Encrypt via File\n4.Decrypt via File\n5.Exit\n");
+    printf("\nEnter choice:");
 		scanf("%d", &choice);
 
     //Take inputs
@@ -20,7 +27,7 @@ int main()
       printf("Enter Text:");
       scanf(" %[^\n]s", Message);
       printf("Enter Shift(1-25):");
-      scanf("%d", &shift);
+      scanf("%d", &shift); //Only taking positive value
       while(!(shift>0)){
         printf("Number out of Range\nTry Again\n");
         printf("Enter Shift(1-25):");
@@ -34,7 +41,7 @@ int main()
       printf("Enter Filename:");
       scanf(" %[^\n]s", FileName);
 
-      // Filename must be existing
+      //Filename must be existing
       while((fp = fopen(FileName, "r")) == NULL){
       fprintf(stderr, "\nError: Unable to open file %s\nTry Again\n", FileName);
       printf("Enter Filename:");
@@ -42,7 +49,7 @@ int main()
       }
 
       printf("Enter Shift(1-25):\n");
-      scanf("%d", &shift);
+      scanf("%d", &shift); //Only taking positive value
       while(!(shift>0)){
         printf("Number out of Range\nTry Again\n");
         printf("Enter Shift(1-25):");
@@ -56,22 +63,22 @@ int main()
 
 		switch (choice) {
 		case 1:
-			t_cipher(Message, shift, choice);
+			t_crypter(Message, shift, choice);
 			break;
 
 		case 2:
       shift = 26 - shift; //De-ciphering and for shorter code
-			t_cipher(Message, shift, choice);
+			t_crypter(Message, shift, choice);
 			break;
     
     // Pointer FILE* isn't used because name of file required
 		case 3:
-      f_cipher(FileName, shift, choice);
+      f_crypter(FileName, shift, choice);
       break;
 
     case 4:
       shift = 26 - shift; //De-ciphering and for shorter code
-      f_cipher(FileName, shift, choice);
+      f_crypter(FileName, shift, choice);
       break;
 
     case 5:
