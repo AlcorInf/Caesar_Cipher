@@ -10,12 +10,47 @@ Tested on Linux and Windows
 #include "crypter.h"
 
 
-int main()
+int main(int argc, char *argv[]) 
 {
 	int choice, shift;
   char Message[100];
   char FileName[FILENAME_MAX];
-  FILE *fp; //Read Filename properly
+  FILE *fp;
+
+  if(argc == 4){
+    if(atoi(argv[3]) == 1){
+      strcpy(Message,argv[1]);
+      shift = atoi(argv[2]);
+      choice = atoi(argv[3]);
+      t_crypter(Message, shift, choice);
+    }
+    else if(atoi(argv[3]) == 2){
+      strcpy(Message,argv[1]);
+      shift = atoi(argv[2]);
+      shift = 26 - (atoi(argv[2]) % 26);
+      choice = atoi(argv[3]);
+      t_crypter(Message, shift, choice);
+    }
+    else if(atoi(argv[3]) == 3){
+      strcpy(FileName,argv[1]);
+      shift = atoi(argv[2]);
+      choice = atoi(argv[3]);
+      f_crypter(FileName, shift, choice);
+    }
+    else if(atoi(argv[3]) == 4){
+      strcpy(FileName,argv[1]);
+      shift = 26 - (atoi(argv[2]) % 26);
+      choice = atoi(argv[3]);
+      f_crypter(FileName, shift, choice);
+    }
+    exit(0);
+  }
+  else{
+    printf("Wrong number of arguments entered\n");
+    exit(0);
+  }
+
+
 
 	do {
 		printf("\n1.Encrypt Text\n2.Decrypt Text\n3.Encrypt via File\n4.Decrypt via File\n5.Exit\n");
