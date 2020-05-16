@@ -53,7 +53,7 @@ Choice - 3: Encrypt 4: Decrypt
     }
     exit(0);
   }
-  else{
+  else if(argc != 1){
     printf("Wrong number of arguments entered\n");
     exit(0);
   }
