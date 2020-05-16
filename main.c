@@ -10,7 +10,15 @@ Tested on Linux and Windows
 #include "crypter.h"
 
 
-int main(int argc, char *argv[]) 
+int main(int argc, char *argv[])
+/* For command line arguments,
+(if space, add it in " ") 
+Format 1: Message Shift Choice
+Choice - 1: Encrypt 2: Decrypt
+
+Format 2:Filename Shift Choice
+Choice - 3: Encrypt 4: Decrypt
+*/
 {
 	int choice, shift;
   char Message[100];
@@ -20,7 +28,7 @@ int main(int argc, char *argv[])
   if(argc == 4){
     if(atoi(argv[3]) == 1){
       strcpy(Message,argv[1]);
-      shift = atoi(argv[2]);
+      shift = atoi(argv[2]) % 26;
       choice = atoi(argv[3]);
       t_crypter(Message, shift, choice);
     }
@@ -33,7 +41,7 @@ int main(int argc, char *argv[])
     }
     else if(atoi(argv[3]) == 3){
       strcpy(FileName,argv[1]);
-      shift = atoi(argv[2]);
+      shift = atoi(argv[2]) % 26;
       choice = atoi(argv[3]);
       f_crypter(FileName, shift, choice);
     }
